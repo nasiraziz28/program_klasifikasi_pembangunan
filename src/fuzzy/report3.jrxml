@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c1384e42-82ed-400e-8562-d5e57767dd33">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="tahun" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     tbl_klasifikasi.`tahun` AS tbl_klasifikasi_tahun,
+     tbl_klasifikasi.`kota` AS tbl_klasifikasi_kota,
+     tbl_klasifikasi.`pdrb` AS tbl_klasifikasi_pdrb,
+     tbl_klasifikasi.`klasifikasi` AS tbl_klasifikasi_klasifikasi
+FROM
+     `tbl_klasifikasi` tbl_klasifikasi
+where
+	tahun = $P{tahun}]]>
+	</queryString>
+	<field name="tbl_klasifikasi_tahun" class="java.lang.String"/>
+	<field name="tbl_klasifikasi_kota" class="java.lang.String"/>
+	<field name="tbl_klasifikasi_pdrb" class="java.lang.String"/>
+	<field name="tbl_klasifikasi_klasifikasi" class="java.lang.String"/>
+	<group name="tbl_klasifikasi_klasifikasi">
+		<groupExpression><![CDATA[$F{tbl_klasifikasi_klasifikasi}]]></groupExpression>
+		<groupHeader>
+			<band height="31">
+				<textField>
+					<reportElement uuid="30b917a3-fb7f-4faa-b9d4-7cc8fa4d62a6" style="SubTitle" x="74" y="1" width="421" height="24" forecolor="#006600"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tbl_klasifikasi_klasifikasi}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement uuid="32965dd6-983f-456e-8ea2-c45e8810b666" positionType="FixRelativeToBottom" x="0" y="0" width="555" height="1"/>
+					<graphicElement>
+						<pen lineWidth="0.5" lineColor="#999999"/>
+					</graphicElement>
+				</line>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="12"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="75" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="b8f6d7af-e329-4c99-9e86-f6d931155b9e" style="Title" x="0" y="0" width="553" height="33"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Klasifikasi Pembangunan Jawa Barat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b90a4fc9-efe2-4fad-aec7-965a96d5472c" x="0" y="33" width="553" height="37"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dengan Metode Fuzzy-Klassen]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="39" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="1cb2edbb-c32c-4a4b-8ddd-247181a853e7" style="Column header" x="116" y="3" width="123" height="27" forecolor="#000000"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Kabupaten/ Kota]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0f8e8714-3e68-4f03-8a11-f1934a167cb3" style="Column header" x="249" y="3" width="94" height="27" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Nilai PDRB]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="495b984d-0cb0-43b0-8ed9-2c0e84946004" style="Column header" x="347" y="3" width="84" height="27" forecolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Tahun]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<textField>
+				<reportElement uuid="f45c40c0-dd35-4dba-bc76-0467dd9de311" style="Detail" x="347" y="0" width="84" height="15"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{tbl_klasifikasi_tahun}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="2498c1a0-fed9-43f2-86d7-2470d351c449" style="Detail" x="239" y="0" width="108" height="15"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{tbl_klasifikasi_pdrb}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b5c2a23b-5bed-4049-9b49-0110d15969d1" style="Detail" x="116" y="1" width="123" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{tbl_klasifikasi_kota}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="26b486d4-5d45-428b-907f-04c967264bd0" style="Column header" x="249" y="0" width="199" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Halaman "+$V{PAGE_NUMBER}+" Dari "]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="a1cce6af-f780-4fb8-9224-dc19ad55431e" style="Column header" x="448" y="0" width="47" height="20"/>
+				<textElement textAlignment="Left">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yy">
+				<reportElement uuid="1dcfde6b-287d-4c63-b056-704aed082369" style="Column header" x="74" y="0" width="123" height="20"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="291">
+			<staticText>
+				<reportElement uuid="17d7c0b2-04ad-4bff-83fe-659a37cd36c4" positionType="FixRelativeToBottom" x="370" y="147" width="159" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Dilaporkan Oleh]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c180577f-66fe-42cb-aea0-49f7d27bc71f" positionType="FixRelativeToBottom" x="370" y="254" width="159" height="20"/>
+				<textElement/>
+				<text><![CDATA[____________________________]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yy">
+				<reportElement uuid="1dcfde6b-287d-4c63-b056-704aed082369" style="Column header" positionType="FixRelativeToBottom" x="370" y="115" width="159" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="false" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="a3c8b217-8290-4201-9a62-5cef7154b11d" x="74" y="10" width="100" height="20"/>
+				<textElement>
+					<font size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Keterangan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3a6e257b-5612-46d7-99d2-5972ba05ccf8" x="74" y="43" width="269" height="20"/>
+				<textElement/>
+				<text><![CDATA[K1= Wilayah yang maju dan berkembang dengan Pesat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3a6e257b-5612-46d7-99d2-5972ba05ccf8" x="347" y="43" width="189" height="20"/>
+				<textElement/>
+				<text><![CDATA[K2 = Wilayah yang maju tapi tertekan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3a6e257b-5612-46d7-99d2-5972ba05ccf8" x="74" y="63" width="269" height="20"/>
+				<textElement/>
+				<text><![CDATA[K3 = Wilayah yang berkembang]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3a6e257b-5612-46d7-99d2-5972ba05ccf8" x="347" y="63" width="189" height="20"/>
+				<textElement/>
+				<text><![CDATA[K4 = Wilayah yang Relatif Tertinggal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="17d7c0b2-04ad-4bff-83fe-659a37cd36c4" positionType="FixRelativeToBottom" x="80" y="147" width="159" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Mengetahui]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c180577f-66fe-42cb-aea0-49f7d27bc71f" positionType="FixRelativeToBottom" x="80" y="254" width="159" height="20"/>
+				<textElement/>
+				<text><![CDATA[____________________________]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>
